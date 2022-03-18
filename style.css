@@ -1,0 +1,37 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: rgb(133, 86, 48);
+  overflow: hidden;
+}
+
+.grid-cartas {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: rgb(102, 62, 29);
+  padding: 10px;
+  width: 80%;
+  justify-content: inherit;
+  align-content: center;
+  margin: auto;
+}
+
+.espacio-carta {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.espacio-carta img {
+  max-width: 140px;
+}
+
+#contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
