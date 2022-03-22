@@ -54,21 +54,6 @@
 
         <div id="contador"></div> 
 
-        <script type="text/babel">
-        const MiPrimerComponente = () => {
-            const [contador, setContador] = React.useState(1)
-            return (
-                <div>
-                    <h1 onClick={() => setContador(contador + 1)}>Yo soy un contador: {contador} </h1>
-                </div>
-            )
-        }
-
-        ReactDOM.render(
-            <MiPrimerComponente />,
-            document.getElementById('contador')
-        )
-
-        </script>
+        <script src="index.js" type="text/babel"></script>
     </body>
 </html>
