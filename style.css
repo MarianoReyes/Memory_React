@@ -11,11 +11,11 @@ body {
 
 .App {
   max-width: 860px;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .btn_jugar {
-  background: none;
+  background: rgb(66, 28, 28);
   border: 2px solid white;
   padding: 5px 10px;
   border-radius: 4px;
@@ -34,7 +34,7 @@ body {
   margin: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 15px;
 }
 
 .frente {
@@ -58,13 +58,45 @@ body {
 
 .carta .frente {
   transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
   position: absolute;
 }
 
 .volteada .frente {
   transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.carta .atras {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
 }
 
 .volteada .atras {
   transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foot_element {
+  margin: 5%;
+}
+
+.disp_none {
+  display: none;
+}
+
+.banner_ganar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(66, 28, 28);
+  padding: 30px 200px;
+  color: white;
 }

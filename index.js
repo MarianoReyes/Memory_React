@@ -13,6 +13,7 @@ const App = () => {
     const [turnos, setTurnos] = React.useState(0)
     const [opcion1, setOpcion1] = React.useState(null)
     const [opcion2, setOpcion2] = React.useState(null)
+    const [ganar, setGanar] = React.useState(0)
 
     //mezclar cartas
     const mezclar_cartas = () => {
@@ -21,10 +22,18 @@ const App = () => {
             .sort(() => Math.random() - 0.5)
             //y esto le asigna un id
             .map((carta) => ({ ...carta, id: Math.random() }))
-
+        setOpcion1(null)
+        setOpcion2(null)
         setCartas(mezclar_cartas)
         setTurnos(0)
+        setGanar(0)
     }
+
+    //auto inicio
+    React.useEffect(() => {
+        mezclar_cartas()
+    }, [])
+
 
     //al hacer click en las cartas
     function click_carta(carta){
@@ -57,31 +66,42 @@ const App = () => {
         }
     }, [opcion1,opcion2])
 
-    function carta_volteada(carta){
-        if(carta === opcion1){
-            carta.volteada = true
+    
+
+    var bandera_ganar=false
+    
+
+    //verificacion ganar
+    React.useEffect(() => {
+        for( const carta of cartas){
+            if(carta.match===true){
+                setGanar(prevganar => prevganar + 1)
+            }
         }
-        else if(carta === opcion2){
-            carta.volteada = true
+    
+        if(ganar === 30){
+            bandera_ganar=true
+            document.getElementById("ganar").className = "banner_ganar"
         }
-        else if(carta.match){
-            carta.volteada = true
+        else{
+            bandera_ganar=false
+            document.getElementById("ganar").className = "disp_none"
         }
-    }
+    }, [cartas])
+
 
     //reset de opciones y otro turno
     const resetTurno = () => {
         setOpcion1(null)
-        setOpcion2(null)
-        
+        setOpcion2(null)       
         setTurnos(prevturnos => prevturnos + 1)
     }
 
+    
     return(
         <div className="App">
             <h1 className="titulo">Juego de Memoria</h1>
-            <button className="btn_jugar" onClick={mezclar_cartas}>Nuevo Juego</button>
-
+            
             <div className="grid_cartas">
                 {cartas.map( carta => (
                     
@@ -93,7 +113,17 @@ const App = () => {
                     </div>
 
                 ))}
+                <div className="disp_none" id="ganar">
+                    <h1>Ganaste</h1>
+                </div>
             </div>
+            <div className="footer">
+                <p className="foot_element">Movimientos: {turnos}</p>
+                <button className="btn_jugar foot_element" onClick={mezclar_cartas}>Nuevo Juego</button>
+            </div>
+            
+
+            
         </div>
     )
 }
