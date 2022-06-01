@@ -96,6 +96,7 @@ const App = () => {
         setOpcion2(null)       
         setTurnos(prevturnos => prevturnos + 1)
     }
+    
 
     
     return(
